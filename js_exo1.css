@@ -56,15 +56,16 @@ div {
     padding: 10px;
 }
 
-#start {
+.button {
     font-size: 2em;
     border: 1px solid green;
     border-radius: 50px;
     color: green;
     background-color: white;
+    margin: 5px;
 }
 
-#start:disabled {
+.button:disabled {
     border: 1px solid grey;
     color: grey;
 }
