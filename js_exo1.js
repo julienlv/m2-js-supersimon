@@ -85,6 +85,8 @@ function perdu() {
     score.innerHTML = "0";
     // Clear user sequence
     userSequence = new Array();
+    // disable clicks
+    disableClicks();
     // Enable start buttons
     enableStartButtons();
 }
