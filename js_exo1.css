@@ -24,9 +24,9 @@ div {
 }
 
 .panel {
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
+    width: 50%;
+    height: 50%;
+    border: 2px solid black;
 }
 
 .panel:first-child {
@@ -43,6 +43,25 @@ div {
 
 .panel:nth-child(4) {
     border-bottom-right-radius: 100%;
+}
+
+#center_circle {
+    background-image: radial-gradient(grey 20%, black);
+    border-radius: 50%;
+    border: 1px solid black;
+    position: absolute;
+    left: 134px;
+    top: 210px;
+    width: 150px;
+    height: 150px;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#center_circle_text {
+    
 }
 
 #game_text {

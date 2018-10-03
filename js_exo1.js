@@ -1,10 +1,3 @@
-/*let pList = document.getElementsByTagName('p');
-for (let p of pList) {
-    p.style.color = 'white';
-    p.style.backgroundColor = 'black';
-}
-console.log(pList[0]);*/
-
 // Define constantes
 const COLORS = ["green","red","yellow","blue"];
 const USER_ANIMATION_DURATION = 100;
@@ -29,6 +22,7 @@ let start_slow = document.getElementById('start_slow');
 let start_medium = document.getElementById('start_medium');
 let start_fast = document.getElementById('start_fast');
 var panels = document.getElementsByClassName('panel');
+var center_circle_text = document.getElementById('center_circle_text');
 var score = document.getElementById('score');
 var max_score = document.getElementById('max_score');
 
@@ -92,6 +86,7 @@ function check_user_choice(choice) {
 function perdu() {
     console.log("DEBUG : perdu");
     currentScore=0;
+    center_circle_text.innerHTML="1";
     score.innerHTML="0";
     // Clear user sequence
     userSequence = new Array();
@@ -102,6 +97,7 @@ function perdu() {
 function gagne() {
     console.log("DEBUG : gagne !");
     currentScore++;
+    center_circle_text.innerHTML = (currentScore+1).toString();
     console.log("DEBUG : currentScore : "+currentScore);
     score.innerHTML = currentScore.toString();
     if (currentScore>maxScore) {
