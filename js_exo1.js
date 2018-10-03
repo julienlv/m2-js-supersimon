@@ -1,10 +1,10 @@
 // Define constantes
-const COLORS = ["green","red","yellow","blue"];
+const COLORS = ["green", "red", "yellow", "blue"];
 const USER_ANIMATION_DURATION = 100;
 const DURATION_BETWEEN_SEQUENCES = 400;
 const FAST_LEVEL = 150;
-const MEDIUM_LEVEL = FAST_LEVEL*2;
-const SLOW_LEVEL = FAST_LEVEL*3;
+const MEDIUM_LEVEL = FAST_LEVEL * 2;
+const SLOW_LEVEL = FAST_LEVEL * 3;
 
 // Default level
 var speed_level = MEDIUM_LEVEL;
@@ -27,9 +27,9 @@ var score = document.getElementById('score');
 var max_score = document.getElementById('max_score');
 
 // Create listeners
-start_slow.addEventListener("click", () => {start_game(SLOW_LEVEL)});
-start_medium.addEventListener("click", () => {start_game(MEDIUM_LEVEL)});
-start_fast.addEventListener("click", () => {start_game(FAST_LEVEL)});
+start_slow.addEventListener("click", () => { start_game(SLOW_LEVEL) });
+start_medium.addEventListener("click", () => { start_game(MEDIUM_LEVEL) });
+start_fast.addEventListener("click", () => { start_game(FAST_LEVEL) });
 
 /*
  * GAME LOGIC
@@ -38,12 +38,12 @@ start_fast.addEventListener("click", () => {start_game(FAST_LEVEL)});
 // Start game
 function start_game(speed) {
     speed_level = speed;
-    console.log("DEBUG : speed : "+speed);
-    console.log("DEBUG : currentScore : "+currentScore);
+    console.log("DEBUG : speed : " + speed);
+    console.log("DEBUG : currentScore : " + currentScore);
     // Disable click and start buttom
     disableClicks();
     disableStartButtons();
-    
+
     // Clear sequences
     sequence = new Array();
     userSequence = new Array();
@@ -53,12 +53,12 @@ function start_game(speed) {
 
 // Execute one step of random sequence
 function sequence_step(step, speed) {
-    if (step<=currentScore) {
+    if (step <= currentScore) {
         let randomPanel = Math.floor(Math.random() * 4);
         sequence.push(randomPanel);
         console.log("DEBUG : randomPanel=" + randomPanel);
-        setTimeout("anim_panel("+randomPanel+", "+speed+")", speed);
-        setTimeout("sequence_step("+step+" + 1, "+speed+")", speed*3);
+        setTimeout("anim_panel(" + randomPanel + ", " + speed + ")", speed);
+        setTimeout("sequence_step(" + step + " + 1, " + speed + ")", speed * 3);
     } else {
         // Clear user sequence
         userSequence = new Array();
@@ -70,7 +70,7 @@ function sequence_step(step, speed) {
 function check_user_choice(choice) {
     if (sequence[userSequence.length] != choice) {
         perdu();
-    } else if (userSequence.length+1==sequence.length) {
+    } else if (userSequence.length + 1 == sequence.length) {
         gagne();
     } else {
         console.log("DEBUG : bien");
@@ -80,9 +80,9 @@ function check_user_choice(choice) {
 
 function perdu() {
     console.log("DEBUG : perdu");
-    currentScore=0;
-    center_circle_text.innerHTML="1";
-    score.innerHTML="0";
+    currentScore = 0;
+    center_circle_text.innerHTML = "1";
+    score.innerHTML = "0";
     // Clear user sequence
     userSequence = new Array();
     // Enable start buttons
@@ -92,15 +92,15 @@ function perdu() {
 function gagne() {
     console.log("DEBUG : gagne !");
     currentScore++;
-    center_circle_text.innerHTML = (currentScore+1).toString();
-    console.log("DEBUG : currentScore : "+currentScore);
+    center_circle_text.innerHTML = (currentScore + 1).toString();
+    console.log("DEBUG : currentScore : " + currentScore);
     score.innerHTML = currentScore.toString();
-    if (currentScore>maxScore) {
+    if (currentScore > maxScore) {
         maxScore = currentScore;
         max_score.innerHTML = maxScore.toString();
     }
     // Continue game
-    setTimeout("start_game("+speed_level+")", DURATION_BETWEEN_SEQUENCES);
+    setTimeout("start_game(" + speed_level + ")", DURATION_BETWEEN_SEQUENCES);
 }
 
 /*
@@ -111,15 +111,15 @@ function gagne() {
 function change_panel_color(idPanel) {
     let color = COLORS[idPanel];
     switch (panels[idPanel].style.backgroundColor) {
-        case 'white': default: panels[idPanel].style.backgroundColor = color; break;
-        case color: panels[idPanel].style.backgroundColor = 'white'; break;
+        case 'rgba(0,0,0,0)': default: panels[idPanel].style.backgroundColor = color; break;
+        case color: panels[idPanel].style.backgroundColor = 'rgba(0,0,0,0)'; break;
     }
 }
 
 // Animate one panel
 function anim_panel(idPanel, duration) {
     change_panel_color(idPanel);
-    setTimeout("change_panel_color("+idPanel+")", duration);
+    setTimeout("change_panel_color(" + idPanel + ")", duration);
 }
 
 /*
@@ -142,7 +142,7 @@ function click_div(idPanel) {
     let color = COLORS[idPanel];
     check_user_choice(idPanel);
     anim_panel(idPanel, USER_ANIMATION_DURATION);
-    console.log("DEBUG : user click :"+idPanel);
+    console.log("DEBUG : user click :" + idPanel);
 }
 
 /*
