@@ -1,0 +1,44 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="js_exo1.css" />
+    
+</head>
+<body>
+    <div id="title">
+        <h1>Super Simon</h1>
+    </div>
+    <div id="container">
+        <div class="panel"></div>
+        <div class="panel"></div>
+        <div class="panel"></div>
+        <div class="panel"></div>
+    </div>
+    <div id="game_text">
+        <form>
+            <select id="speed_level" hidden>
+                <option value="slow">slow</option>
+                <option value="medium">medium</option>
+                <option value="fast">fast</option>
+            </select>
+            <input type="button" id="start" value="start">
+        </form>
+        <h3>Current score : <span id="score"></span></h3>
+        <h3>Max score : <span id="max_score"></span></h3>
+        <!--
+        <table>
+            <thead><td></td><td>slow</td><td>medium</td><td>fast</td></thead>
+            <tbody>
+                <tr><td>Current score: </td><td><b>0</b></td><td><b id="cs_m">0</b></td><td><b>0</b></td></tr>
+                <tr><td>Max score: </td><td><b>0</b></td><td><b>0</b></td><td><b>0</b></td></tr>
+            </tbody>
+        </table>
+        -->
+    </div>
+    <script src="js_exo1.js"></script>
+</body>
+</html>
