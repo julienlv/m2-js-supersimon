@@ -50,8 +50,8 @@ div {
     border-radius: 50%;
     border: 1px solid black;
     position: absolute;
-    left: 134px;
-    top: 210px;
+    left: 135px;
+    top: 200px;
     width: 150px;
     height: 150px;
     z-index: 1;
@@ -82,6 +82,7 @@ div {
     color: green;
     background-color: white;
     margin: 5px;
+    box-shadow: 3px 1px 10px black;
 }
 
 .button:disabled {

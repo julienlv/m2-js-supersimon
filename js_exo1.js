@@ -57,12 +57,7 @@ function sequence_step(step, speed) {
         let randomPanel = Math.floor(Math.random() * 4);
         sequence.push(randomPanel);
         console.log("DEBUG : randomPanel=" + randomPanel);
-        switch (randomPanel) {
-            case 0: setTimeout("change_panel_color(0)", speed); setTimeout("change_panel_color(0)", speed*2); break;
-            case 1: setTimeout("change_panel_color(1)", speed); setTimeout("change_panel_color(1)", speed*2); break;
-            case 2: setTimeout("change_panel_color(2)", speed); setTimeout("change_panel_color(2)", speed*2); break;
-            case 3: setTimeout("change_panel_color(3)", speed); setTimeout("change_panel_color(3)", speed*2); break;
-        }
+        setTimeout("anim_panel("+randomPanel+", "+speed+")", speed);
         setTimeout("sequence_step("+step+" + 1, "+speed+")", speed*3);
     } else {
         // Clear user sequence
@@ -121,6 +116,12 @@ function change_panel_color(idPanel) {
     }
 }
 
+// Animate one panel
+function anim_panel(idPanel, duration) {
+    change_panel_color(idPanel);
+    setTimeout("change_panel_color("+idPanel+")", duration);
+}
+
 /*
  * EVENTS LISTENERS
  */
@@ -140,8 +141,7 @@ function click_div4() {
 function click_div(idPanel) {
     let color = COLORS[idPanel];
     check_user_choice(idPanel);
-    setTimeout("change_panel_color("+idPanel+", '"+color+"')", idPanel);
-    setTimeout("change_panel_color("+idPanel+", '"+color+"')", USER_ANIMATION_DURATION);
+    anim_panel(idPanel, USER_ANIMATION_DURATION);
     console.log("DEBUG : user click :"+idPanel);
 }
 
